@@ -3,7 +3,6 @@
 using namespace std;
 int flag=0, len=0, x=0, chooser;
 char str1[50], str2[50], str[50], *s1, *s2, yesno;
-//LAB4 String Manipulation using Pointers Kyle Zabala
 void mySTRCPY();
 void mySTRCMP();
 void mySTRCAT();
