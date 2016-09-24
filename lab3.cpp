@@ -2,69 +2,86 @@
 #include<string.h>
 #include<cstring>
 using namespace std;
-char str1[100], str2[200], word[100], yesno;
-int n, flag, chooser;
-//LAB3 String Manipulation by Kyle Zabala
-char problem1() {
+
+void problem1();
+void problem2();
+void problem3();
+void problem4();
+void problem5();
+void problem6();
+
+void problem1(){
+
+  char str1[100];
+  char str2[100];
   int result;
   cout<<"Enter a first word (str1): ";
   gets(str1);
   cout<<"Enter second word (str2): ";
   gets(str2);
-  outputString(str1,str2);
-  if (result==-1){
-  	cout << "negative";
+  if (strcmp(str1,str2)>0){
+  	cout << "Positive";
   }
-  else if (result==0){
-  	cout << "equal";
+  else if (strcmp(str1,str2)<0){
+  	cout << "Negative";
   }
   else{
-  	cout << "positive";
+  	cout << "Equal";
   } 
 
 }
-char problem2() {
-cout<<"Enter a first word (str1): ";
-gets(str1);
-cout<<"Enter second word (str2): ";
-gets(str2);
-int result = 0;
-for(int i = 0; i<strlen(str2); i++){
-	if(str2[i]<str1[i]){
-		result = 1;
-		break;
+
+void problem2(){
+	char str1[100];
+	char str2[100];
+	cout<<"Enter a first word (str1): ";
+	gets(str1);
+	cout<<"Enter second word (str2): ";
+	gets(str2);
+	int result = 0;
+	for(int i = 0; i<strlen(str2); i++){
+		if(str2[i]<str1[i]){
+			result = 1;
+			break;
+		}
+		else if(str2[i]>str1[i]){
+			result = -1;
+			break;
+		}
 	}
-	else if(str2[i]>str1[i]){
-		result = -1;
-		break;
-	}
+	cout << result;
 }
-cout << result;
-}
-char problem3() {
+
+void problem3(){
+  char str1[100];
+  char str2[100];
   int result;
   strcat(str1, str2);
   cout << "Enter a first word: ";
   cin.getline(str1,100);
   cout << "Enter a second word: ";
   cin.getline(str2,200);
-  cout << "New value for str1: " << customStrCat(str1, str2);
+  cout << "New value for str1: " << strcat(str1, str2);
 }
-char problem4() {
-cout<<"\n\n**\nPALINDROME\n**\n";
-cout<<"Enter a word: ";
-gets(word);
-n=strlen(word);
-for(int i=0;i<n;i++) {
-if(word[i]!=word[n-(i+1)]) flag=0;
-else flag=1;
+
+void problem4(){
+	char str1[100];
+	char str2[100];
+	int n, flag;
+	cout<<"Enter a word: ";
+	gets(str1);
+	n=strlen(str1);
+	for(int i=0;i<n;i++) {
+	if(str1[i]!=str1[n-(i+1)]) flag=0;
+	else flag=1;
+	}
+	if (flag==1) cout<<"The word "<<str1<<" is a palindrome.";
+	else if (flag==0) cout<<"The word "<<str1<<" is NOT a palindrome.";
 }
-if (flag==1) cout<<"The word "<<word<<" is a palindrome.";
-else if (flag==0) cout<<"The word "<<word<<" is NOT a palindrome.";
-system("pause");
-system("cls");
-}
-char problem5(){
+
+void problem5(){
+	char str1[100];
+	char str2[100];
 	int result;
     cout << "Enter some string: ";
     cin.getline(str1,100);
@@ -80,48 +97,55 @@ char problem5(){
 }
 	cout << str1;
 }
-char problem6(){
-	string inp_str("I am British");
-  string out_str("");
-  string word_str;
-  istringstream iss( inp_str );
 
+void problem6(){
+  char str1[100];
+	int i, a(0), length;
+	cout<<"Enter the string: ";
+	gets(str1);
+	
+	length=strlen(str1);
+	for(i=length;i>=0;i--){
+		if(str1[i]==32){
+			a=i+1;
+			while(str1[a]!=32&&a<length){
+				cout<<str1[a];
+				a++;
+			}
+			cout<<endl;
+		}
+	}
+	a=0;
+	while(str1[a]!=32){
+		cout<<str1[a];
+		a++;
+	}
+}
 
-  while (iss >> word_str) {
-    out_str = word_str + " " + out_str;
-  } // while (my_iss >> my_word) 
-
-  cout << out_str << endl;
-}
-}
-int choose(int chooser) {
-cout<<"Choose a problem# to solve...";
-cin>>chooser;
-switch(chooser) {
-case 1:problem1();break;
-case 2:problem2();break;
-case 3:problem3();break;
-case 4:problem4();break;
-case 5:problem5();break;
-case 6:problem6();break;
-default: break;
-}
-return chooser;
-system("pause");
-system("cls");
-}
-main() {
-choose(chooser);
-cout<<"\n*\nSolve another problem??? [y/n]";
-cin>>yesno;
-if(yesno=='y') {
-choose(chooser);
-}
-else if(yesno=='n') cout<<"Thanks for using this program \n";
-else {
-cout<<"\n*\nSolve another problem??? [y/n]";
-cin>>yesno;
-}
-system("pause");
-system("cls");
+main(){
+	
+	problem1();
+	cout<<endl;
+	system("pause");
+	system("cls");
+	problem2();
+	cout<<endl;
+	system("pause");
+	system("cls");
+	problem3();
+	cout<<endl;
+	system("pause");
+	system("cls");
+	problem4();
+	cout<<endl;
+	system("pause");
+	system("cls");
+	problem5();
+	cout<<endl;
+	system("pause");
+	system("cls");
+	problem6();
+	cout<<endl;
+	system("pause");
+	system("cls");
 }
