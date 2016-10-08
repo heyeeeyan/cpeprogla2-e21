@@ -3,6 +3,7 @@
 #include <cmath>
 using namespace std;
 
+int i, num, sum=0;
 int main(){
     ifstream f("input.txt");
     FILE *fp;
@@ -13,8 +14,6 @@ int main(){
 		system("pause");
 		exit(1);
 	}
-    
-    int i, num, sum=0;
     while (f >> num) {
     }
     for (i=0; i<num;i++){
